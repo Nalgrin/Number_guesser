@@ -1,0 +1,32 @@
+import random
+
+print("Number Guesser pick a number from 1 to 100")
+min_number = 1
+max_number = 3
+random_number = random.randint(min_number, max_number)
+correct_number = random_number
+tries = 0
+keepGoing = True
+
+while keepGoing:
+    user_guess = input("Guess:")
+    if not user_guess.isnumeric():
+        print("Is not the correct input")
+        continue
+
+    user_guess_number = int(user_guess)
+
+    if user_guess_number < min_number or user_guess_number > max_number:
+        print(f'Invalid number pls enter a number between {min_number} - {max_number}. ')
+        continue
+    tries += 1
+    if user_guess_number > correct_number:
+        print("Too High")
+    elif user_guess_number < correct_number:
+        print("Too Low")
+    elif user_guess_number == correct_number:
+        print("Awesome you got it correct!")
+        keepGoing = False
+    elif tries >= 7:
+        print("You failed, the correct number was:", correct_number)
+        keepGoing = False
